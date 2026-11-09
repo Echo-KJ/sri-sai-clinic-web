@@ -41,13 +41,12 @@ useEffect(() => {
 
   setMinDate(formattedDate);
 }, []);
-  // Load active doctors
+  // Load doctors
   useEffect(() => {
     async function loadDoctors() {
       const { data, error } = await supabase
         .from("doctors")
         .select("doctor_id, doctor_name, specialization")
-        .eq("is_active", true)
         .order("doctor_name");
 
       if (error) {
